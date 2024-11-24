@@ -5,101 +5,57 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Les crêpes du projet plongée du lycée Queneau</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <!-- Bouton Jour/Nuit -->
-  <button id="mode-toggle" aria-label="Mode jour/nuit" title="Changer le mode">
-    <span id="icon">🌞</span>
-  </button>
-
-  <!-- Bannière -->
-  <header class="banner">
-    <div class="overlay"></div>
-    <h1>Les crêpes du projet plongée du lycée Queneau</h1>
+  <header>
+    <div class="banner">
+      <h1>Les crêpes du projet plongée du lycée Queneau</h1>
+    </div>
+    <nav>
+      <a href="#about">Qui sommes nous</a>
+      <a href="#menu">Menu</a>
+      <a href="#order">Commander</a>
+      <button id="theme-toggle" class="theme-button">🌞/🌙</button>
+    </nav>
   </header>
-
-  <!-- Navigation -->
-  <nav>
-    <a href="#qui-sommes-nous" class="nav-link">Qui sommes-nous</a>
-    <a href="#menu" class="nav-link">Menu</a>
-    <a href="#commander" class="nav-link">Commander</a>
-  </nav>
-
   <main>
-    <!-- Qui sommes-nous -->
-    <section id="qui-sommes-nous">
-      <h2>Qui sommes-nous ?</h2>
-      <p>Nous sommes des élèves du lycée Queneau passionnés par la plongée sous-marine. Nos ventes de crêpes financent un projet permettant à tous de découvrir les merveilles de l'océan.</p>
+    <section id="about">
+      <h2>Qui sommes nous</h2>
+      <p>Nous sommes des élèves du lycée Queneau ayant choisi d’aller en première “plongée”. La vente de ces crêpes nous permet de financer notre voyage jusqu’à la presqu’île d’Hyères, afin de valider notre niveau 1 de plongée.</p>
     </section>
-
-    <!-- Menu -->
     <section id="menu">
       <h2>Notre Menu</h2>
       <ul>
-        <li>Choco-Banane - 2,50€</li>
-        <li>Sucre-Citron - 2,00€</li>
-        <li>Fromage-Jambon - 3,50€</li>
+        <li>Proposition 1 - Prix non défini</li>
+        <li>Proposition 2 - Prix non défini</li>
+        <li>Proposition 3 - Prix non défini</li>
       </ul>
     </section>
-
-    <!-- Commander -->
-    <section id="commander">
+    <section id="order">
       <h2>Passer commande</h2>
-      <form id="order-form">
-        <label for="nom">Nom :</label>
-        <input type="text" id="nom" name="nom" required>
-
-        <label for="prenom">Prénom :</label>
-        <input type="text" id="prenom" name="prenom" required>
-
-        <label for="commande">Choix des crêpes :</label>
-        <select id="commande" name="commande">
-          <option value="choco-banane">Choco-Banane - 2,50€</option>
-          <option value="sucre-citron">Sucre-Citron - 2,00€</option>
-          <option value="fromage-jambon">Fromage-Jambon - 3,50€</option>
+      <form>
+        <label for="name">Nom :</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="crepe">Choix des crêpes :</label>
+        <select id="crepe" name="crepe">
+          <option value="choix1">(Choix 1)</option>
+          <option value="choix2">(Choix 2)</option>
+          <option value="choix3">(Choix 3)</option>
         </select>
-
-        <label for="quantite">Quantité :</label>
-        <input type="number" id="quantite" name="quantite" min="1" required>
-
-        <label for="mode-paiement">Mode de paiement :</label>
-        <select id="mode-paiement" name="mode-paiement">
-          <option value="liquide">Liquide</option>
-          <option value="autre">Autre</option>
-        </select>
-
+        
+        <label for="quantity">Quantité :</label>
+        <input type="number" id="quantity" name="quantity" min="1" required>
+        
         <button type="submit">Envoyer</button>
       </form>
-
-      <p id="confirmation-message" class="hidden">Votre commande a été enregistrée !</p>
     </section>
   </main>
-
-  <!-- Section Admin -->
-  <section id="admin" class="hidden">
-    <h2>Gestion des commandes</h2>
-    <table id="orders-table">
-      <thead>
-        <tr>
-          <th>Nom</th>
-          <th>Prénom</th>
-          <th>Choix</th>
-          <th>Quantité</th>
-          <th>Total (€)</th>
-          <th>Paiement</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </section>
-
-  <!-- Footer -->
   <footer>
     <p>© 2024 Les crêpes du projet plongée du lycée Queneau</p>
     <p>Horaires des ventes : Du lundi au vendredi, 12h-14h.</p>
   </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
