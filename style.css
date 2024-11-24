@@ -1,103 +1,54 @@
-/* Global Styles */
-body {
-  font-family: 'Roboto', sans-serif;
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+// Défilement doux
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+  });
+});
 
-/* Header and Banner */
-header {
-  text-align: center;
-  color: white;
-}
+// Gestion des commandes
+const orderForm = document.getElementById('order-form');
+const ordersTable = document.querySelector('#orders-table tbody');
+const confirmationMessage = document.getElementById('confirmation-message');
+const adminSection = document.getElementById('admin');
 
-.banner {
-  background: url('banner.jpg') no-repeat center center/cover;
-  position: relative;
-  padding: 50px 0;
-}
+// Validation formulaire
+orderForm.addEventListener('submit', function (e) {
+  e.preventDefault();
+  const nom = document.getElementById('nom').value;
+  const prenom = document.getElementById('prenom').value;
+  const commande = document.getElementById('commande').value;
+  const quantite = parseInt(document.getElementById('quantite').value);
+  const paiement = document.getElementById('mode-paiement').value;
 
-.banner h1 {
-  font-family: 'Dancing Script', cursive;
-  font-size: 2.5em;
-  background: rgba(0, 0, 0, 0.5);
-  display: inline-block;
-  padding: 10px 20px;
-  border-radius: 5px;
-}
+  // Calcul du total
+  const prix = commande === 'choco-banane' ? 2.5 : commande === 'sucre-citron' ? 2.0 : 3.5;
+  const total = (prix * quantite).toFixed(2);
 
-/* Navigation */
-nav {
-  display: flex;
-  justify-content: center;
-  background: #333;
-}
+  // Ajouter la commande dans le tableau
+  const row = document.createElement('tr');
+  row.innerHTML = `<td>${nom}</td><td>${prenom}</td><td>${commande}</td><td>${quantite}</td><td>${total}</td><td>${paiement}</td>`;
+  ordersTable.appendChild(row);
 
-nav a {
-  color: white;
-  padding: 10px 20px;
-  text-decoration: none;
-}
+  // Sauvegarde locale
+  const commandes = JSON.parse(localStorage.getItem('commandes') || '[]');
+  commandes.push({ nom, prenom, commande, quantite, total, paiement });
+  localStorage.setItem('commandes', JSON.stringify(commandes));
 
-nav a:hover {
-  background: #555;
-}
+  // Confirmation
+  confirmationMessage.classList.remove('hidden');
+  setTimeout(() => confirmationMessage.classList.add('hidden'), 3000);
 
-/* Sections */
-section {
-  padding: 20px;
-  margin: 20px auto;
-  max-width: 800px;
-}
+  // Réinitialiser le formulaire
+  orderForm.reset();
+});
 
-/* Order Form */
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-form label,
-form input,
-form select,
-form textarea,
-form button {
-  margin-bottom: 10px;
-}
-
-form button {
-  background: #28a745;
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-}
-
-form button:hover {
-  background: #218838;
-}
-
-/* Admin Section */
-.hidden {
-  display: none;
-}
-
-#orders-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-#orders-table th,
-#orders-table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 10px;
-  background: #333;
-  color: white;
-}
+// Admin accès (mot de passe simplifié)
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'a') {
+    const password = prompt('Entrez le mot de passe admin :');
+    if (password === 'admin123') {
+      adminSection.classList.remove('hidden');
+    }
+  }
+});
