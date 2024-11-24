@@ -8,21 +8,23 @@
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Bouton Mode Jour/Nuit -->
-  <button id="mode-toggle" aria-label="Mode jour/nuit">
+  <!-- Bouton Jour/Nuit -->
+  <button id="mode-toggle" aria-label="Mode jour/nuit" title="Changer le mode">
     <span id="icon">🌞</span>
   </button>
 
-  <header>
-    <div class="banner">
-      <h1>Les crêpes du projet plongée du lycée Queneau</h1>
-    </div>
-    <nav>
-      <a href="#qui-sommes-nous" class="nav-link">Qui sommes-nous</a>
-      <a href="#menu" class="nav-link">Menu</a>
-      <a href="#commander" class="nav-link">Commander</a>
-    </nav>
+  <!-- Bannière -->
+  <header class="banner">
+    <div class="overlay"></div>
+    <h1>Les crêpes du projet plongée du lycée Queneau</h1>
   </header>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#qui-sommes-nous" class="nav-link">Qui sommes-nous</a>
+    <a href="#menu" class="nav-link">Menu</a>
+    <a href="#commander" class="nav-link">Commander</a>
+  </nav>
 
   <main>
     <!-- Qui sommes-nous -->
@@ -74,7 +76,7 @@
     </section>
   </main>
 
-  <!-- Admin Section -->
+  <!-- Section Admin -->
   <section id="admin" class="hidden">
     <h2>Gestion des commandes</h2>
     <table id="orders-table">
@@ -92,6 +94,7 @@
     </table>
   </section>
 
+  <!-- Footer -->
   <footer>
     <p>© 2024 Les crêpes du projet plongée du lycée Queneau</p>
     <p>Horaires des ventes : Du lundi au vendredi, 12h-14h.</p>
