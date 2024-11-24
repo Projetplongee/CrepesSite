@@ -1,54 +1,74 @@
-// Défilement doux
-document.querySelectorAll('.nav-link').forEach(link => {
-  link.addEventListener('click', function (e) {
-    e.preventDefault();
-    document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-  });
-});
+/* Global Styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  transition: background-color 0.3s, color 0.3s;
+}
 
-// Gestion des commandes
-const orderForm = document.getElementById('order-form');
-const ordersTable = document.querySelector('#orders-table tbody');
-const confirmationMessage = document.getElementById('confirmation-message');
-const adminSection = document.getElementById('admin');
+/* Mode Jour/Nuit */
+body.night {
+  background-color: #001a33;
+  color: white;
+}
 
-// Validation formulaire
-orderForm.addEventListener('submit', function (e) {
-  e.preventDefault();
-  const nom = document.getElementById('nom').value;
-  const prenom = document.getElementById('prenom').value;
-  const commande = document.getElementById('commande').value;
-  const quantite = parseInt(document.getElementById('quantite').value);
-  const paiement = document.getElementById('mode-paiement').value;
+button#mode-toggle {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  z-index: 1000;
+}
 
-  // Calcul du total
-  const prix = commande === 'choco-banane' ? 2.5 : commande === 'sucre-citron' ? 2.0 : 3.5;
-  const total = (prix * quantite).toFixed(2);
+/* Banner */
+.banner {
+  background-color: red;
+  padding: 50px 0;
+  text-align: center;
+}
 
-  // Ajouter la commande dans le tableau
-  const row = document.createElement('tr');
-  row.innerHTML = `<td>${nom}</td><td>${prenom}</td><td>${commande}</td><td>${quantite}</td><td>${total}</td><td>${paiement}</td>`;
-  ordersTable.appendChild(row);
+.banner h1 {
+  font-family: 'Dancing Script', cursive;
+  color: white;
+  font-size: 2.5em;
+}
 
-  // Sauvegarde locale
-  const commandes = JSON.parse(localStorage.getItem('commandes') || '[]');
-  commandes.push({ nom, prenom, commande, quantite, total, paiement });
-  localStorage.setItem('commandes', JSON.stringify(commandes));
+/* Navigation */
+nav {
+  display: flex;
+  justify-content: center;
+  background-color: gold;
+  transition: background-color 0.3s;
+}
 
-  // Confirmation
-  confirmationMessage.classList.remove('hidden');
-  setTimeout(() => confirmationMessage.classList.add('hidden'), 3000);
+nav a {
+  color: black;
+  text-decoration: none;
+  padding: 10px 20px;
+  font-weight: bold;
+}
 
-  // Réinitialiser le formulaire
-  orderForm.reset();
-});
+nav a:hover {
+  text-decoration: underline;
+}
 
-// Admin accès (mot de passe simplifié)
-document.addEventListener('keydown', function (e) {
-  if (e.key === 'a') {
-    const password = prompt('Entrez le mot de passe admin :');
-    if (password === 'admin123') {
-      adminSection.classList.remove('hidden');
-    }
-  }
-});
+body.night nav {
+  background-color: silver;
+}
+
+/* Footer */
+footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+/* Admin Section */
+.hidden {
+  display: none;
+}
