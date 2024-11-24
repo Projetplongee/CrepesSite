@@ -1,18 +1,4 @@
-// Défilement doux
-document.querySelectorAll('.nav-link').forEach(link => {
-  link.addEventListener('click', function (e) {
-    e.preventDefault();
-    document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-  });
-});
-
-// Gestion des commandes
-const orderForm = document.getElementById('order-form');
-const ordersTable = document.querySelector('#orders-table tbody');
-const confirmationMessage = document.getElementById('confirmation-message');
-const adminSection = document.getElementById('admin');
-
-// Mode jour/nuit
+// Toggle Jour/Nuit
 const modeToggle = document.getElementById('mode-toggle');
 const icon = document.getElementById('icon');
 
@@ -21,8 +7,16 @@ modeToggle.addEventListener('click', () => {
   icon.textContent = document.body.classList.contains('night') ? '🌜' : '🌞';
 });
 
-// Validation formulaire
-orderForm.addEventListener('submit', function (e) {
+// Défilement doux
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector(e.target.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+// Gestion des commandes
+document.getElementById('order-form').addEventListener('submit', e => {
   e.preventDefault();
 
   const nom = document.getElementById('nom').value;
@@ -36,20 +30,10 @@ orderForm.addEventListener('submit', function (e) {
 
   const row = document.createElement('tr');
   row.innerHTML = `<td>${nom}</td><td>${prenom}</td><td>${commande}</td><td>${quantite}</td><td>${total}</td><td>${paiement}</td>`;
-  ordersTable.appendChild(row);
+  document.querySelector('#orders-table tbody').appendChild(row);
 
-  confirmationMessage.classList.remove('hidden');
-  setTimeout(() => confirmationMessage.classList.add('hidden'), 3000);
-
-  orderForm.reset();
-});
-
-// Accès admin
-document.addEventListener('keydown', function (e) {
-  if (e.key === 'a') {
-    const password = prompt('Entrez le mot de passe admin :');
-    if (password === 'admin123') {
-      adminSection.classList.remove('hidden');
-    }
-  }
+  document.getElementById('confirmation-message').classList.remove('hidden');
+  setTimeout(() => {
+    document.getElementById('confirmation-message').classList.add('hidden');
+  }, 3000);
 });
