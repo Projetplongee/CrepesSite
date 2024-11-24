@@ -5,26 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Les crêpes du projet plongée du lycée Queneau</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
-    <h1>Les crêpes du projet plongée du lycée Queneau</h1>
+    <div class="banner">
+      <h1>Les crêpes du projet plongée du lycée Queneau</h1>
+    </div>
     <nav>
-      <a href="#menu" class="btn-menu">Menu</a>
-      <a href="#commander" class="btn-commander">Commander</a>
+      <a href="#qui-sommes-nous" class="nav-link">Qui sommes-nous</a>
+      <a href="#menu" class="nav-link">Menu</a>
+      <a href="#commander" class="nav-link">Commander</a>
     </nav>
   </header>
 
   <main>
-    <!-- Section Accueil -->
-    <section id="accueil">
-      <h2>Bienvenue !</h2>
-      <p>Envie de délicieuses crêpes faites maison ? Commandez facilement depuis notre menu !</p>
-      <img src="crepe.jpg" alt="Image de crêpes appétissantes" style="width:100%; max-width:600px; border-radius: 10px;">
+    <!-- Qui sommes-nous -->
+    <section id="qui-sommes-nous">
+      <h2>Qui sommes-nous ?</h2>
+      <p>Nous sommes des élèves du lycée Queneau passionnés par la plongée sous-marine. Nos ventes de crêpes financent un projet permettant à tous de découvrir les merveilles de l'océan.</p>
     </section>
 
-    <!-- Section Menu -->
+    <!-- Menu -->
     <section id="menu">
       <h2>Notre Menu</h2>
       <ul>
@@ -34,36 +36,65 @@
       </ul>
     </section>
 
-    <!-- Section Commander -->
+    <!-- Commander -->
     <section id="commander">
       <h2>Passer commande</h2>
-      <form action="https://formspree.io/f/TON_FORM_SPREE" method="POST">
+      <form id="order-form">
         <label for="nom">Nom :</label>
         <input type="text" id="nom" name="nom" required>
-        
+
+        <label for="prenom">Prénom :</label>
+        <input type="text" id="prenom" name="prenom" required>
+
         <label for="commande">Choix des crêpes :</label>
         <select id="commande" name="commande">
-          <option value="choco-banane">Choco-Banane</option>
-          <option value="sucre-citron">Sucre-Citron</option>
-          <option value="fromage-jambon">Fromage-Jambon</option>
+          <option value="choco-banane">Choco-Banane - 2,50€</option>
+          <option value="sucre-citron">Sucre-Citron - 2,00€</option>
+          <option value="fromage-jambon">Fromage-Jambon - 3,50€</option>
         </select>
-        
+
         <label for="quantite">Quantité :</label>
         <input type="number" id="quantite" name="quantite" min="1" required>
-        
+
         <label for="message">Message (facultatif) :</label>
         <textarea id="message" name="message"></textarea>
-        
+
+        <label for="mode-paiement">Mode de paiement :</label>
+        <select id="mode-paiement" name="mode-paiement">
+          <option value="liquide">Liquide</option>
+          <option value="autre">Autre</option>
+        </select>
+
         <button type="submit">Envoyer</button>
       </form>
+
+      <p id="confirmation-message" class="hidden">Votre commande a été enregistrée !</p>
     </section>
   </main>
 
+  <!-- Admin Section -->
+  <section id="admin" class="hidden">
+    <h2>Gestion des commandes</h2>
+    <table id="orders-table">
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>Choix</th>
+          <th>Quantité</th>
+          <th>Total (€)</th>
+          <th>Paiement</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
   <footer>
-    <p>© 2024 Les crêpes du projet plongée du lycée Queneau - Fait avec ❤️ au lycée</p>
+    <p>© 2024 Les crêpes du projet plongée du lycée Queneau</p>
+    <p>Horaires des ventes : Du lundi au vendredi, 12h-14h.</p>
   </footer>
 
-  <!-- Inclusion du fichier JavaScript -->
   <script src="script.js"></script>
 </body>
 </html>
