@@ -1,19 +1,18 @@
 <!DOCTYPE html>
-<script src="script.js"></script>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Les crêpes du projet plongée du lycée Queneau</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
-    <h1 style="font-family: 'Pacifico', cursive;">Les crêpes du projet plongée du lycée Queneau</h1>
+    <h1>Les crêpes du projet plongée du lycée Queneau</h1>
     <nav>
-      <a href="#menu" style="display: inline-block; padding: 10px 20px; margin: 5px; background-color: #FFD700; color: black; text-decoration: none; border-radius: 5px;">Menu</a>
-      <a href="#commander" style="display: inline-block; padding: 10px 20px; margin: 5px; background-color: #FF4500; color: white; text-decoration: none; border-radius: 5px;">Commander</a>
+      <a href="#menu" class="btn-menu">Menu</a>
+      <a href="#commander" class="btn-commander">Commander</a>
     </nav>
   </header>
 
@@ -38,21 +37,24 @@
     <!-- Section Commander -->
     <section id="commander">
       <h2>Passer commande</h2>
-      <form id="orderForm">
+      <form action="https://formspree.io/f/TON_FORM_SPREE" method="POST">
         <label for="nom">Nom :</label>
         <input type="text" id="nom" name="nom" required>
         
         <label for="commande">Choix des crêpes :</label>
         <select id="commande" name="commande">
-          <option value="Choco-Banane">Choco-Banane - 2,50€</option>
-          <option value="Sucre-Citron">Sucre-Citron - 2,00€</option>
-          <option value="Fromage-Jambon">Fromage-Jambon - 3,50€</option>
+          <option value="choco-banane">Choco-Banane</option>
+          <option value="sucre-citron">Sucre-Citron</option>
+          <option value="fromage-jambon">Fromage-Jambon</option>
         </select>
         
         <label for="quantite">Quantité :</label>
         <input type="number" id="quantite" name="quantite" min="1" required>
         
-        <button type="button" id="payButton" style="background: #28a745; color: white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px;">Payer avec PayPal</button>
+        <label for="message">Message (facultatif) :</label>
+        <textarea id="message" name="message"></textarea>
+        
+        <button type="submit">Envoyer</button>
       </form>
     </section>
   </main>
@@ -61,8 +63,7 @@
     <p>© 2024 Les crêpes du projet plongée du lycée Queneau - Fait avec ❤️ au lycée</p>
   </footer>
 
-  <!-- Script PayPal -->
-  <script src="https://www.paypal.com/sdk/js?client-id=TON_CLIENT_ID&currency=EUR"></script>
+  <!-- Inclusion du fichier JavaScript -->
   <script src="script.js"></script>
 </body>
 </html>
