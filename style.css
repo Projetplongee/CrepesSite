@@ -3,8 +3,8 @@ body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
-  line-height: 1.6;
   transition: background-color 0.3s, color 0.3s;
+  line-height: 1.6;
 }
 
 /* Mode Jour/Nuit */
@@ -26,49 +26,61 @@ button#mode-toggle {
 
 /* Banner */
 .banner {
-  background-color: red;
-  padding: 50px 0;
+  position: relative;
+  height: 250px;
+  background: url('https://via.placeholder.com/1500x500') no-repeat center center/cover;
+  color: white;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .banner h1 {
   font-family: 'Dancing Script', cursive;
-  color: white;
   font-size: 2.5em;
+  z-index: 1;
+  margin: 0;
 }
 
 /* Navigation */
 nav {
+  background-color: gold;
   display: flex;
   justify-content: center;
-  background-color: gold;
-  transition: background-color 0.3s;
 }
 
 nav a {
-  color: black;
-  text-decoration: none;
   padding: 10px 20px;
+  text-decoration: none;
+  color: black;
   font-weight: bold;
+  transition: color 0.3s;
 }
 
 nav a:hover {
-  text-decoration: underline;
+  color: white;
 }
 
-body.night nav {
-  background-color: silver;
+/* Responsive */
+@media (max-width: 768px) {
+  .banner h1 {
+    font-size: 2em;
+  }
 }
 
-/* Footer */
 footer {
   background-color: black;
   color: white;
   text-align: center;
   padding: 10px;
-}
-
-/* Admin Section */
-.hidden {
-  display: none;
 }
